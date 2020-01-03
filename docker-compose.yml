@@ -15,8 +15,9 @@ services:
         source: elasticsearch
         target: /usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
+      - "9200:9200" #RESTful API 通过端口 9200 和 Elasticsearch 进行通信
       - "9300:9300"
+      #JAVA的节点客户端和传输客户端通过9300 端口并使用 Elasticsearch 的原生传输协议和集群交互。集群中的节点通过端口 9300 彼此通信。
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
       ELASTIC_PASSWORD: changeme
